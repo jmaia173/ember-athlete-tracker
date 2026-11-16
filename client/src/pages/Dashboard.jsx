@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { sessionsApi } from '../services/api';
+import CheckInForm from '../components/CheckInForm';
 import SessionForm from '../components/SessionForm';
 import SessionList from '../components/SessionList';
 
@@ -39,6 +40,7 @@ export default function Dashboard() {
 
       {user.role === 'athlete' && (
         <div className="stack">
+          <CheckInForm />
           <SessionForm onCreate={handleCreate} />
           {loadError && <p className="error">{loadError}</p>}
           <SessionList sessions={sessions} />

@@ -39,3 +39,8 @@ export const sessionsApi = {
   list: () => request('/sessions'),
   create: (payload) => request('/sessions', { method: 'POST', body: payload }),
 };
+
+export const checkInsApi = {
+  list: () => request('/checkins'),
+  save: (payload) => request('/checkins', { method: 'POST', body: payload }),
+};
