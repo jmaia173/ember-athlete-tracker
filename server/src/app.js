@@ -5,6 +5,7 @@ require('dotenv').config();
 const authRoutes = require('./routes/auth');
 const sessionRoutes = require('./routes/sessions');
 const checkInRoutes = require('./routes/checkins');
+const loadRoutes = require('./routes/load');
 
 const app = express();
 
@@ -24,5 +25,6 @@ app.get('/api/health', (req, res) => res.json({ status: 'ok' }));
 app.use('/api/auth', authRoutes);
 app.use('/api/sessions', sessionRoutes);
 app.use('/api/checkins', checkInRoutes);
+app.use('/api/load', loadRoutes);
 
 module.exports = app;

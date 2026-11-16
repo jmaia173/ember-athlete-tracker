@@ -4,6 +4,7 @@ import { sessionsApi } from '../services/api';
 import CheckInForm from '../components/CheckInForm';
 import SessionForm from '../components/SessionForm';
 import SessionList from '../components/SessionList';
+import WeeklyLoad from '../components/WeeklyLoad';
 
 export default function Dashboard() {
   const { user, logout } = useAuth();
@@ -40,6 +41,7 @@ export default function Dashboard() {
 
       {user.role === 'athlete' && (
         <div className="stack">
+          <WeeklyLoad refreshKey={sessions.length} />
           <CheckInForm />
           <SessionForm onCreate={handleCreate} />
           {loadError && <p className="error">{loadError}</p>}

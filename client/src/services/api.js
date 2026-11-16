@@ -44,3 +44,10 @@ export const checkInsApi = {
   list: () => request('/checkins'),
   save: (payload) => request('/checkins', { method: 'POST', body: payload }),
 };
+
+export const loadApi = {
+  weekly: ({ today, tzOffset }) => {
+    const params = new URLSearchParams({ today, tzOffset });
+    return request(`/load/weekly?${params.toString()}`);
+  },
+};
