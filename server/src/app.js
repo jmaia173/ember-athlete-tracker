@@ -6,7 +6,16 @@ const authRoutes = require('./routes/auth');
 
 const app = express();
 
-app.use(cors({ origin: process.env.CLIENT_URL || 'http://localhost:5173' }));
+// Allow the configured client URL plus any localhost port (Vite may pick 5174, etc.).
+const allowedOrigin = (origin, callback) => {
+  const isLocalhost = !origin || /^http:\/\/localhost:\d+$/.test(origin);
+  if (isLocalhost || origin === process.env.CLIENT_URL) {
+    return callback(null, true);
+  }
+  return callback(new Error('Not allowed by CORS'));
+};
+
+app.use(cors({ origin: allowedOrigin }));
 app.use(express.json());
 
 app.get('/api/health', (req, res) => res.json({ status: 'ok' }));
