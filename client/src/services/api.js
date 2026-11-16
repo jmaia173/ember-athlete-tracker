@@ -34,3 +34,8 @@ export const authApi = {
   login: (payload) => request('/auth/login', { method: 'POST', body: payload }),
   me: () => request('/auth/me'),
 };
+
+export const sessionsApi = {
+  list: () => request('/sessions'),
+  create: (payload) => request('/sessions', { method: 'POST', body: payload }),
+};
